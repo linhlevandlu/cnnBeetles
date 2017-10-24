@@ -1,0 +1,515 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{fullpage}
+\usepackage[margin=2cm]{geometry}
+\usepackage{amsmath}
+\usepackage{subfig}
+\usepackage{graphicx}
+\usepackage[justification=centering]{caption}
+\begin{document}
+\title{A convolutional neural network on Beetles dataset }
+\author{LE Van Linh and BEURTON-AIMAR Marie}
+\date{October, 2017}
+\maketitle
+\begin{abstract}
+In this study, we present a convolutional neural network (CNN) which is used to predict the landmarks on beetle's images. The network is designed as a pipeline of the layers. Models have the same structures but the output at the last layer is modified to suitable with the number of landmarks that it should be predicted. The model is evaluated on five datasets of beetle: \textit{left mandible, right mandible, pronotum, body, and head}. For each dataset, a number of $260$ images are used to train and validate, the remaining images are used to test the output model. The evaluation is the correlation coefficient between the manual coordinates (which given by the biologist) and the predict coordinates. Besides, a statistic based on the distances between the manual landmarks and predicted landmarks are also calculated. The model is implemented by Python on Lassagne framework\cite{lasagne}.
+\end{abstract}
+
+\section{Convolutional neural network}
+\subsection{Architecture}
+The network includes three convolutional(CONV) layers followed by three maximum pooling(POOL) layers, four dropouts(DROP) layers, and three full connected(FC) layers (Fig.\ref{pmodel}). The input of the network is the gray-scale image with the size of $256 \times 192$. The depth of network can be expressed by increasing of the deep at each convolutional layer. They are increased from $32, 64,$ and $128$ from the first CONV layer to the third CONV layer with different filter sizes. While, the filter sizes are kept in the same size for every POOL layers. The dropout ratios of the DROP layers increase from the first to the end: $0.1, 0.2, 0.3, $ and $0.5$. At the end of the network, three full connected are set up to predict the landmarks. The first two FC layers have the same outputs($1000$) while the output at the last FC has been change to correspond with the number of landmarks. The detail parameters at each layer are presented in Appendix \ref{appendix}. The model is implemented by Lassagne framework\cite{lasagne}.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.45]{images/model3_dropout}
+	\caption{The illustration of the convolutional neural network}
+	\label{pmodel}
+\end{figure}
+\subsection{Parameters}
+The model is trained with $5000$ \texttt{epochs} and \texttt{batch size} of $128$. For each epoch, the dataset is randomly split into training set and validation set with the ratio of $0.6:0.4$. The \texttt{learning rate} and \texttt{momentum} are initialized to $0.03$ and $0.9$, respectively. During training, they are re-calculated to adjust with the remaining epochs. All the initial parameters are shown in the Table \ref{modelparameters}.
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l l l}
+	Parameter & Initial value & End value \\ \hline
+	Epochs & 5000 &  \\ \hline
+	Training batch size & 128 & \\ \hline
+	Testing batch size & 128 & \\ \hline
+	Learning rate & 0.03 & 0.0001 \\ \hline
+	Momentum & 0.9 & 0.9999 \\ \hline
+	Training data & 0.6 & \\ \hline
+	Validation data & 0.4 &  \\ \hline
+	\end{tabular}
+	\caption{The network parameters in proposed model}
+	\label{modelparameters}
+\end{table}
+\section{Data}
+The beetle dataset includes the images of five parts: \textit{left mandible, right mandible, pronotum, body, and head}. For each part, a collection of \textbf{293} images are collected. However, the number of the images in each part are changed after checking to suppress the not-working images (i.e empty image, broken object). Table \ref{datatable} shows the number of available images in each part and the number of the images in each process.
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l c c c}
+	Part & Total available images & Training + Validation & Testing \\ \hline
+	Left mandible & 286 & 260 & 26 \\ \hline
+	Right mandible & 290 & 260 & 30 \\ \hline
+	Body & 293 & 260 & 33 \\ \hline
+	Head & 293 & 260 & 33 \\ \hline
+	Pronotum & 293 & 260 & 33 \\ \hline
+	\end{tabular}
+	\caption{The number of available images and the number of the images which used to train (and validate) and test}
+	\label{datatable}
+\end{table}~\\
+Because the number of the images are limited (just $260$ color images), it does not enough to use for training process. Additional, the models are worked on gray-scale images. So, we applied some rules to enlarge the dataset. The first rule is adding a constant value to a channel of RGB image, we will have a new RGB image. For example, from an original $RGB$ image, if we add $10$ to red channel, we will have a new image $(R+10)GB$. Then, we apply the same rule with blue and green channel, we will obtain two new images: $R(G+10)B$ and $RG(B+10)$. By that way, from an RGB image, we can generate three RGB images by adding a constant to each channel(each time just change to a channel). The second rule is splitting the channels of RGB image (because the models work on gray-scale). It means that we can generate six versions from an original image. At the end, the number of the image in the training data is $ 260 \times 7 = 1820$ images (six versions and original). Before giving to the models, the images are down-sampled with the size of $256 \times 192$. The number of the images in training set and validation set are splitted automatically by the model's parameter.
+\section{Experiments}
+In practical, convergence is usually faster if the average of each input variable over the training set is close to zero. Because the values of the pixels and the coordinates of the landmarks are positive. If we consider that we stay at the a layer of the network, and the weights are updated by an amount proportional to $\delta x$($\delta$ is the scalar error at the layer and $x$ is the input vector). When the input vectors are positive, the updates of weights that feed into the layer will be the same sign($sign(\delta)$), it means that the weights can only all decrease or all increase together for a given input. That, if the weight vector change direction, it can only do by zigzagging which is inefficient and thus slow down learning. Therefore, it is good to shift the inputs so that the average over the training set is close to zero. Moreover, when the input is set closed with zero, it will more suitable with the sigmoid activation function\cite{lecun2012efficient}. So, \textit{the brightness of the image is normalized to $[0,1]$, instead of $[0,255]$. And, the coordinates of the landmarks are normalized to $[-1,1]$, instead of $[0,256]$ and $[0,192]$ before giving to the network}.
+
+For each part, the network is training and validation with many times (called round). For each time, the training dataset is changed following the way to choose the test dataset (i.e circular). At the end, we can obtain the predicted landmarks of all images in the dataset by combining all the  testing images corresponding with the training model. This section describes the experimental on all parts of beetle. 
+%left mandible, right mandible, pronotum, body, and head
+\subsection{Left mandible part}
+Table \ref{mgloss} shows the information during training and validation on left mandible.
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l p{2cm} p{2.4cm} p{2.6cm} p{2.2cm} p{2.2cm}}
+	Round & Total images & Testing index (from-to) & Training index (from-to) & Training loss & Validation loss \\ \hline
+	r1 & 286 & 1-26 & 27-286 & 0.00073 & 0.00148 \\ \hline
+	r2 & 286 & 27-52 & remaining & 0.00074 & 0.00149 \\ \hline
+	r3 & 286 & 53-78 & remaining & 0.00074 & 0.00177 \\ \hline
+	r4 & 286 & 79-104 & remaining & 0.00068 & 0.00141 \\ \hline
+	r5 & 286 & 105-130 & remaining & 0.00077 & 0.00231 \\ \hline
+	r6 & 286 & 131-156 & remaining & 0.00070 & 0.00180 \\ \hline
+	r7 & 286 & 157-182 & remaining & 0.00063 & 0.00125 \\ \hline
+	r8 & 286 & 183-208 & remaining & 0.00062 & 0.00104 \\ \hline
+	r9 & 286 & 209-234 & remaining & 0.00067 & 0.00173 \\ \hline	
+	r10 & 286 & 235-260 & remaining & 0.00067 & 0.00145 \\ \hline
+	r11 & 286 & 261-286 & remaining & 0.00072 & 0.00188 \\ \hline
+	\end{tabular}
+	\caption{The training loss and validation loss at each training round of left mandible}
+	\label{mgloss}
+\end{table}~\\
+Which:
+\begin{itemize}
+	\item \textbf{Round}: indexing training round
+	\item \textbf{Total images}: total images of left mandible
+	\item \textbf{Testing index}: indexing of the images that chosen to test set.
+	\item \textbf{Training index}: indexing of the images that chosen to train and valid set.
+	\item \textbf{Training loss}: training loss at a round
+	\item \textbf{Validation loss}: validation loss at a round
+\end{itemize}~\\
+Fig.\ref{lossmgcurves} shows the curves of training and validation loss of two rounds on left mandible.
+\begin{figure}[h!]
+\centering
+\subfloat[Round 1]{\label{model1loss2}\includegraphics[width=0.5\textwidth]{./images/cnnmodel3_5000_mg_1000_output_v10}}~~
+\subfloat[Round 7]{\label{model2loss2}\includegraphics[width=0.5\textwidth]{./images/cnnmodel3_5000_mg_1000_output_v18_loss}}
+\caption{The losses curves of training and validation at two training rounds of left mandible  }
+\label{lossmgcurves}
+\end{figure}~\\[0.1cm]
+After each training round, the model is evaluated on corresponding test dataset. Combining all the testing result of all rounds, we obtain the prediction landmarks of each image in the dataset. The correlation coefficient between manual and predicted landmarks is computed by using the correlation methods\cite{pallant2013spss,myers2010research,kendall1938new}. The correlation results are shown in Table \ref{corrmg}.
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l c c}
+		Method & x correlation & y correlation \\ \hline
+		Pearson & $0.9781574$ & $0.9875064$ \\ \hline
+		Spearman & $0.983688$ & $0.9800946$ \\ \hline
+		Kendall & $0.9136765$ & $0.8932026$ \\ \hline
+	\end{tabular}
+	\caption{The correlation between manual and predicted landmarks on left mandible images}
+	\label{corrmg}
+\end{table}~\\
+Besides the correlation coefficient, the accuracy of predicted positions on the image has cared. Following that, the distance between manual landmark and predicted landmark is calculated by each landmark and the average of each landmark has been computed. And the predicted landmark is considered as well position if the distance between them (prediction and manually) is less than average distance. Fig.\ref{mgfig} shows the proportions of well predicted landmarks on left mandibles.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.37]{images/mg}
+	\caption{The proportion of well predicted landmarks on left mandibles}
+	\label{mgfig}
+\end{figure}
+\subsection{Right mandible part}
+The information of each training round on right mandible is shown in Table \ref{mdloss}.
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l p{2cm} p{2.4cm} p{2.6cm} p{2.2cm} p{2.2cm}}
+	Round & Total images & Testing index (from-to) & Training index (from-to) & Training loss & Validation loss \\ \hline
+	r1 & 290 & 1-30 & 31-290 & 0.00075 & 0.00162 \\ \hline
+	r2 & 290 & 31-60 & remaining & 0.00081 & 0.00208 \\ \hline
+	r3 & 290 & 61-90 & remaining & 0.00076 & 0.00158 \\ \hline
+	r4 & 290 & 91-120 & remaining & 0.00075 & 0.00167 \\ \hline
+	r5 & 290 & 121-150 & remaining & 0.00079 & 0.00206 \\ \hline
+	r6 & 290 & 151-180 & remaining & 0.00080 & 0.00263 \\ \hline
+	r7 & 290 & 181-210 & remaining & 0.00081 & 0.00245 \\ \hline
+	r8 & 290 & 211-240 & remaining & 0.00080 & 0.00194 \\ \hline
+	r9 & 290 & 241-270 & remaining & 0.00079 & 0.00157 \\ \hline	
+	r10 & 290 & 271-290 & remaining & 0.00082 & 0.00242 \\ \hline
+	\end{tabular}
+	\caption{The training loss and validation loss at each training round of right mandible}
+	\label{mdloss}
+\end{table}~\\
+Table \ref{corrmd} shows the correlation coefficient between manual landmarks and predicted landmarks on right mandibles.
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l c c}
+		Method & x correlation & y correlation \\ \hline
+		Pearson & $0.9852194$ & $0.9858498$ \\ \hline
+		Spearman & $0.9863889$ & $0.983251$ \\ \hline
+		Kendall & $0.9104557$ & $0.898321$ \\ \hline
+	\end{tabular}
+	\caption{The correlation between manual and predicted landmarks on right mandible images}
+	\label{corrmd}
+\end{table}
+Fig.\ref{mdfig} shows the proportions of well predicted landmarks on right mandibles.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.6]{images/md}
+	\caption{The proportion of well predicted landmarks on right mandibles}
+	\label{mdfig}
+\end{figure}~\\
+\subsection{Pronotum part}
+The information of each training round on pronotum is shown in Table \ref{pronoloss}.
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l p{2cm} p{2.4cm} p{2.6cm} p{2.2cm} p{2.2cm}}
+	Round & Total images & Testing index (from-to) & Training index (from-to) & Training loss & Validation loss \\ \hline
+	r1 & 293 & 1-33 & 34-293 & 0.00075 & 0.00162 \\ \hline
+	r2 & 293 & 34-66 & remaining & 0.00081 & 0.00208 \\ \hline
+	r3 & 293 & 67-99 & remaining & 0.00076 & 0.00158 \\ \hline
+	r4 & 293 & 100-132 & remaining & 0.00075 & 0.00167 \\ \hline
+	r5 & 293 & 133-165 & remaining & 0.00079 & 0.00206 \\ \hline
+	r6 & 293 & 166-198 & remaining & 0.00080 & 0.00263 \\ \hline
+	r7 & 293 & 199-231 & remaining & 0.00081 & 0.00245 \\ \hline
+	r8 & 293 & 2232-264 & remaining & 0.00080 & 0.00194 \\ \hline
+	r9 & 293 & 265-293 & remaining & 0.00079 & 0.00157 \\ \hline	
+	\end{tabular}
+	\caption{The training loss and validation loss at each training round of pronotum}
+	\label{pronoloss}
+\end{table}~\\
+Table \ref{corrprono} shows the correlation coefficient between manual landmarks and predicted landmarks on pronotum part.
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l c c}
+		Method & x correlation & y correlation \\ \hline
+		Pearson & $0.0$ & $0.0$ \\ \hline
+		Spearman & $0.0$ & $0.0$ \\ \hline
+		Kendall & $0.0$ & $0.0$ \\ \hline
+	\end{tabular}
+	\caption{The correlation between manual and predicted landmarks on pronotum images}
+	\label{corrprono}
+\end{table}
+\subsection{Body part}
+The information of each training round on body part is shown in Table \ref{bodyloss}.
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l p{2cm} p{2.4cm} p{2.6cm} p{2.2cm} p{2.2cm}}
+	Round & Total images & Testing index (from-to) & Training index (from-to) & Training loss & Validation loss \\ \hline
+	r1 & 293 & 1-33 & 34-293 & 0.00019 & 0.00012 \\ \hline
+	r2 & 293 & 34-66 & remaining & 0.00020 & 0.00012 \\ \hline
+	r3 & 293 & 67-99 & remaining & 0.00000 & 0.00000 \\ \hline
+	r4 & 293 & 100-132 & remaining & 0.00000 & 0.00000 \\ \hline
+	r5 & 293 & 133-165 & remaining & 0.00000 & 0.00000 \\ \hline
+	r6 & 293 & 166-198 & remaining & 0.00000 & 0.00000 \\ \hline
+	r7 & 293 & 199-231 & remaining & 0.00000 & 0.00000 \\ \hline
+	r8 & 293 & 2232-264 & remaining & 0.00000 & 0.00000 \\ \hline
+	r9 & 293 & 265-293 & remaining & 0.00000 & 0.00000 \\ \hline	
+	\end{tabular}
+	\caption{The training loss and validation loss at each training round of body}
+	\label{bodyloss}
+\end{table}~\\
+Table \ref{corrbody} shows the correlation coefficient between manual landmarks and predicted landmarks on body part.
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l c c}
+		Method & x correlation & y correlation \\ \hline
+		Pearson & $0.0$ & $0.0$ \\ \hline
+		Spearman & $0.0$ & $0.0$ \\ \hline
+		Kendall & $0.0$ & $0.0$ \\ \hline
+	\end{tabular}
+	\caption{The correlation between manual and predicted landmarks on body images}
+	\label{corrbody}
+\end{table}
+\subsection{Head part}
+The information of each training round on head part is shown in Table \ref{headloss}.
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l p{2cm} p{2.4cm} p{2.6cm} p{2.2cm} p{2.2cm}}
+	Round & Total images & Testing index (from-to) & Training index (from-to) & Training loss & Validation loss \\ \hline
+	r1 & 293 & 1-33 & 34-293 & 0.00023 & 0.00032 \\ \hline
+	r2 & 293 & 34-66 & remaining & 0.00027 & 0.00044 \\ \hline
+	r3 & 293 & 67-99 & remaining & 0.00026 & 0.00051 \\ \hline
+	r4 & 293 & 100-132 & remaining & 0.00026 & 0.00041 \\ \hline
+	r5 & 293 & 133-165 & remaining & 0.00026 & 0.00058 \\ \hline
+	r6 & 293 & 166-198 & remaining & 0.00027 & 0.00072 \\ \hline
+	r7 & 293 & 199-231 & remaining & 0.00025 & 0.00050 \\ \hline
+	r8 & 293 & 2232-264 & remaining & 0.00000 & 0.00000 \\ \hline
+	r9 & 293 & 265-293 & remaining & 0.00000 & 0.00000 \\ \hline	
+	\end{tabular}
+	\caption{The training loss and validation loss at each training round of head}
+	\label{headloss}
+\end{table}~\\
+Table \ref{corrhead} shows the correlation coefficient between manual landmarks and predicted landmarks on right mandibles.
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l c c}
+		Method & x correlation & y correlation \\ \hline
+		Pearson & $0.0$ & $0.0$ \\ \hline
+		Spearman & $0.0$ & $0.0$ \\ \hline
+		Kendall & $0.0$ & $0.0$ \\ \hline
+	\end{tabular}
+	\caption{The correlation between manual and predicted landmarks on head images}
+	\label{corrhead}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\iffalse
+\section{The models}
+In this section, we will describe the architecture of the models and the parameters that used during training and validation processes.
+\subsection{Model 1: Automatic ear landmarks detection}
+\subsubsection{Architecture}
+Celia Cintas et al\cite{cintas2016automatic} proposed a method based on geometric morphometric and deep learning for automatic ear detection and feature extraction in the form of landmarks. The convolutional neural network was trained with a set of manually landmarks examples. The network is able to provide the morphometric landmarks on ear image automatically.
+
+Three models were designed and trained for performing the automatic landmarks task. These architectures are different in the number of convolution layers, the filter sizes, and the learning rate. The data which used by the network for training and validation is a set of gray-scale images of the size $96 \times 96$ and set of list of manual landmarks coresponding to all the images in the image dataset.% Before giving to the network, the brightness of the image is scaled to $[0,1]$, instead of $[0,255]$ and the landmark coordinates is normalized to $[-1,1]$, instead of $[0,96]$.
+
+\textbf{Fig.\ref{1Econv}} shows the best architecture of three models. In this architecture, a structure of two convolutional layers with the filters, followed by maximum pooling and dropout layer. This structure is repeated \textbf{three times} to obtain features at different levels with different size of filters(i.e $4 \times 4$ and $3 \times 3$). After extraction the features, two fully connected linear layers with 1500 units each and a dropout layer is hired. The output layer contains 90 output units corresponding with 45 landmarks for the predicted position of the landmarks. But in our case, the output of the last layer has changed from $90$ to $16$ for adapting with the number of landmarks on pronotum.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.45]{images/ear_cnn2}
+	\caption{The best architecture for automatic ear's landmarks detection}
+	\label{1Econv}
+\end{figure}
+\subsubsection{Parameters}
+The network was trained with $5000$ \texttt{epochs} and \texttt{batch size} of $128$. For each epoch, the dataset is randomly split into the training set and validation set. The number of images in the sets is divided with the ratio of $80\%:20\%$, respectively. The \texttt{learning rate} is set to $0.03$; and the initial of \texttt{momentum} is $0.9$. During training, the learning rate and momentum are re-calculated to adjust with the number of remaining epochs. All the parameters in model 1 are shown in Table \ref{celiaparameters}:
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l l l}
+	Parameter & Initial value & End value \\ \hline
+	Epochs & 5000 &  \\ \hline
+	Training batch size & 128 & \\ \hline
+	Testing batch size & 128 & \\ \hline
+	Learning rate & 0.03 & 0.00001 \\ \hline
+	Momentum & 0.9 & 0.9999 \\ \hline
+	\end{tabular}
+	\caption{The network parameters in the Celia model}
+	\label{celiaparameters}
+\end{table}
+\subsection{Model 2: Automatic beetle landmarks detection}
+\subsubsection{Architecture}
+From the tutorial of Daniel Nouri\footnote{http://danielnouri.org/} about using CNN to detect facial key points. We propose a CNN to detect the landmarks on pronotum. The proposed network includes three convolutional layers followed by three maximum pooling layers and three full connected layers(Fig.\ref{pmodel}). The network receives the gray-scale image ($256 \times 192$) as the input. The deep of convolutional layers is increased from $32, 64, $ to $ 128$ with different size of filter. The size of filters in pooling layers are kept in the same size of $2 \times 2$. At the end of network, three full-connected layers with the size of $500, 500, $ and $16$ are set up to predict the positions of landmarks. Besides, the model is designed with a small sharing learning-rate and the momentum. The learning-rate and the momentum are changed overtime of training.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.45]{images/model3}
+	\caption{The architecture of proposed model}
+	\label{pmodel}
+\end{figure}
+\subsubsection{Parameters}
+The parameters in model 2 are shown in the Table \ref{model2parameters}:
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l l l}
+	Parameter & Initial value & End value \\ \hline
+	Epochs & 5000 &  \\ \hline
+	Training batch size & 128 & \\ \hline
+	Testing batch size & 128 & \\ \hline
+	Learning rate & 0.03 & 0.0001 \\ \hline
+	Momentum & 0.9 & 0.9999 \\ \hline
+	\end{tabular}
+	\caption{The network parameters in proposed model}
+	\label{model2parameters}
+\end{table}
+\section{Data}
+\label{sectionData}
+The experiment data includes 293 color images of pronotum. The images are divided into 3 subsets: training($200$ images), validation($60$ images) and testing set($33$ images). In which, the training and validation are combined to use as the input data of the networks(total $260$ images) during training. The images in testing set are used to evaluate the model. The images are chosen randomly to put into each set (after we have done some experiments).
+
+Because the number of the images are limited (just $260$ color images), it does not enough to use for training process. Additional, the models are worked on gray-scale images. So, we applied some rules to enlarge the dataset. The first rule is adding a constant value to a channel of RGB image, we will have a new RGB image. For example, from an original $RGB$ image, if we add $10$ to red channel, we will have a new image $(R+10)GB$. Then, we apply the same rule with blue and green channel, we will obtain two new images: $R(G+10)B$ and $RG(B+10)$. By that way, from an RGB image, we can generate three RGB images by adding a constant to each channel(each time just change to a channel). The second rule is splitting the channels of RGB image (because the models work on gray-scale). It means that we can generate six versions from an original image. At the end, the number of the image in the training data is $ 260 \times 7 = 1820$ images (six versions and original). Before giving to the models, the images are down-sampled with the size of $256 \times 192$. The number of the images in training set and validation set are splitted automatically by the model's parameter.
+\section{Experiments}
+In practical, convergence is usually faster if the average of each input variable over the training set is close to zero. Because the values of the pixels and the coordinates of the landmarks are positive. If we consider that we stay at the a layer of the network, and the weights are updated by an amount proportional to $\delta x$($\delta$ is the scalar error at the layer and $x$ is the input vector). When the input vectors are positive, the updates of weights that feed into the layer will be the same sign($sign(\delta)$), it means that the weights can only all decrease or all increase together for a given input. That, if the weight vector change direction, it can only do by zigzagging which is inefficient and thus slow down learning. Therefore, it is good to shift the inputs so that the average over the training set is close to zero. Moreover, when the input is set closed with zero, it will more suitable with the sigmoid activation function\cite{lecun2012efficient}.
+ 
+In this section, we describe the experimental processes of two models on pronotum dataset (section \ref{sectionData}). The experiments were conducted in the way pre-processing data before giving to the network. At the first experiment, the values of the images are normalized and the coordinates of the landmarks are kept as original. In the second experiment, both inputs are normalized before giving to the network. Then, some improvements are added into model 2 to obtain the better result.
+\subsection{Experiment 1}
+In the first experiment, the images are kept in gray-scale with the size of $256 \times 192$. The brightness of the image is normalized to $[0,1]$, instead of $[0,255]$ while the coordinates of the landmarks are kept as original. 
+\subsubsection{With model 1}
+We kept the same initial parameters of the model to train with the pronotum dataset. During training, the network cannot detect the loss of train and validation ($nan$ value). A solution is given that we decreased the initial value (from $0.03$ to $0.000001$) and the stop value (from $0.0001$ to $0.0000001$) of learning rate. The network is re-trained with new parameters and we have succeeded. Fig.\ref{model1loss} shows the losses during training and validation process. We can see that the losses are not stable between training and validation. Fig.\ref{model1test} shows the prediction landmarks on an image in test set (the network never saw before). The predicted landmarks are closed with the pronotum but their location is still inaccurate.
+\begin{figure}[h!]
+\centering
+\subfloat[Training losses and validation loss]{\label{model1loss}\includegraphics[width=0.5\textwidth]{./images/figure_1_celia_5000_without_normalize_data_loss}}~~
+\subfloat[A pronotum with predicted landmarks]{\label{model1test}\includegraphics[width=0.5\textwidth]{./images/fig1_celia}}
+\caption{The evaluation of pronotum data on model 1}
+\label{model1tl}
+\end{figure}
+\subsubsection{With model 2}
+From the experiment of model 1 on pronotum data. We change the learning rate in the model 2 before training the network: initial value is changed from $0.3$ to $0.00001$ and stop value is changed from $0.0001$ to $0.000001$. The training loss and validation loss are shown in Fig.\ref{model2loss}. The loss is stable to $1600$ epochs but then, they decreased to the end: $0.16694$ for training loss and $0.55584$ for validation loss. Clearly, when we compare the losses from two models, a difference has appeared, and the results of model 2 are worth considering. Fig.\ref{model2test} shown the predicted landmarks on a test image.
+\begin{figure}[h!]
+\centering
+\subfloat[Training losses and validation loss]{\label{model2loss}\includegraphics[width=0.5\textwidth]{./images/figure_1_cnn3_5000_loss_v13}}~~
+\subfloat[A pronotum with predicted landmarks]{\label{model2test}\includegraphics[width=0.5\textwidth]{./images/fig1_model2}}
+\caption{The evaluation of pronotum data on model 2}
+\label{model2tl}
+\end{figure}
+The model 2 is used to predict the landmarks on the test set (includes 33 images). Then, the correlation coefficient between manual and predicted landmarks is computed by using different correlation methods\cite{pallant2013spss,myers2010research,kendall1938new}. The correlation results are shown in Table.\ref{corr1}
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l c c}
+		Method & x correlation & y correlation \\ \hline
+		Pearson & $0.9966784$ & $0.9957729$ \\ \hline
+		Spearman & $0.9913126$ & $0.9565425$ \\ \hline
+		Kendall & $0.9273012$ & $0.8273057$ \\ \hline
+	\end{tabular}
+	\caption{The correlation between manual and predicted landmarks on test images}
+	\label{corr1}
+\end{table}~\\[0.5cm]
+\subsection{Experiment 2}
+In the second experiment, both the image values and the target (landmark coordinates) are normalized to a range of $[-1,1]$, instead of $[0,256]$ and $[0,192]$ before giving to the networks\cite{lecun2012efficient}. After some trials, the learning rates are set at the beginning to increase the speed of the processes. Fig.\ref{expr2} show the loss during training and validation of two models with the new version of data. We can see that the losses from model 2 is really better than from model 1. But, at the end of training, the overfitting has appeared in model 2.
+\begin{figure}[h!]
+\centering
+\subfloat[Model 1]{\label{model1loss2}\includegraphics[width=0.4\textwidth]{./images/figure_1_loss_celia_5000_normalized_data}}~~
+\subfloat[Model 2]{\label{model2loss2}\includegraphics[width=0.4\textwidth]{./images/cnnmodel3_5000_pronotum_v13_without_dropout_normalized_data_loss}}
+\caption{The training and validation loss on two models}
+\label{expr2}
+\end{figure}~\\
+To prevent the overfitting on the model 2, we have changed the ratio of train/val selection. The new ratio is set to $60\%:40\%$, instead of $80\%:20\%$ as the beginning. The network is re-train with the new data but the overfitting is also not stopped. Then, we decide to modify the structure of the network (Fig.\ref{model2dropout}):
+\begin{itemize}
+	\item Increasing the number of output at the last two hidden layers (full-connected) from $500$ to $1000$, but the result did not lead to better performances,
+	\item Then, we added four dropout layers to the network. The dropout layer is considered as the good solution to prevent the overfitting\cite{srivastava2014dropout}. They have been located following the pooling layers and the first fill-connected layer. The dropout ratios are $0.1$, $0.2$, $0.3$ and $0.5$.
+\end{itemize}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.35]{images/model3_dropout}
+	\caption{The proposed model with dropout layers}
+	\label{model2dropout}
+\end{figure}~\\
+Fig.\ref{tvldropout} shows the losses after the model have been modified. The overfitting problem has been solved but the losses are stability from $2000^{th}$ until the end(we need more data). 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.17]{images/figure_1_cnn3_3000_v13_loss_change3_dropout_increase_2}
+	\caption{The training and validation loss with dropout layers}
+	\label{tvldropout}
+\end{figure}~\\
+Fig.\ref{expr22} and show the predicted landmarks on an image in test dataset. 
+\begin{figure}[h!]
+\centering
+\subfloat[Model 1]{\label{model1loss2}\includegraphics[width=0.4\textwidth]{./images/fig2_celia}}~~
+\subfloat[Model 2]{\label{model2loss2}\includegraphics[width=0.4\textwidth]{./images/fig2_model2}}
+\caption{The predicted landmarks on a test image}
+\label{expr22}
+\end{figure}~\\
+Both models are evaluated on test set. Table \ref{coffcelia} shows the correlation coefficient of model 1 and Table \ref{coffdropout} shows the correlation coefficient of model 2. Clearly that, the result from model 2 have been improved a little bit when we compare with the last result(Table \ref{corr1}). While we do not see the difference between the results of model 1 and model 2. The only difference is the architecture of the models: model 1 is deeper than model 2 that means the model 1 takes more time to train than the model 2.
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l c c}
+		Method & x correlation & y correlation \\ \hline
+		Pearson & $0.9976008$ & $0.9983418$ \\ \hline
+		Spearman & $0.9948408$ & $0.9875125$ \\ \hline
+		Kendall & $0.9463506$ & $0.9133915$ \\ \hline
+	\end{tabular}
+	\caption{The correlation between manual and predicted landmarks on pronotum images with model 1}
+	\label{coffcelia}
+\end{table}
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l c c}
+		Method & x correlation & y correlation \\ \hline
+		Pearson & $0.9970585$ & $0.9978605$ \\ \hline
+		Spearman & $0.9942475$ & $0.9859642$ \\ \hline
+		Kendall & $0.9430501$ & $0.9067739$ \\ \hline
+	\end{tabular}
+	\caption{The correlation between manual and predicted landmarks on pronotum images with model 2}
+	\label{coffdropout}
+\end{table}~\\
+Besides the evaluation on correlation coefficient, we also consider the accuracy on each landmark of all images in the test set. The distance between manual landmark and predicted landmark is calculated. Then, the standard deviation(SD) is used to quantify the dispersion of a set of distances. Fig.\ref{expr22s} show the statistic on each landmark of test dataset(from two models). All landmarks have been detected with an accuracy greater than $70\%$ (excepts $3^{rd}$ landmark).  The first model provided the good accuracy for $2^{nd}, 5^{th}, 8^{th}$ landmarks, while the second model had the good position for $4^{th}, 5^{th}, 6^{th}$ landmarks. Generally, we can see a vast difference between the correlation coefficient result and the proportion on each landmark.
+\begin{figure}[h!]
+\centering
+\subfloat[Model 1]{\label{model1loss2}\includegraphics[width=0.5\textwidth]{./images/pronotum_celia_statistic}}~~
+\subfloat[Model 2]{\label{model2loss2}\includegraphics[width=0.5\textwidth]{./images/pronotum_pmodel_statistic}}
+\caption{The proportions of well predicted landmarks on each model by standard deviation}
+\label{expr22s}
+\end{figure}~\\
+The average distances and standard deviations of all landmarks are shown in Table \ref{sdmodel1} and Table \ref{sdmodel2}.
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l c c c c c c c c}
+		Landmarks & LM1 & LM2 & LM3 & LM4 & LM5 & LM6 & LM7 & LM8 \\ \hline
+		Average & 3.6758 &	3.8836 & 	2.9337 & 	4.4401 &	 3.8504 &	4.5767 &	 3.0965 &	4.5527
+
+ \\ \hline
+		SD & 2.5006 &	3.0874 & 	1.6591 & 	3.0579 & 	3.1195 &	 3.9012 &	2.4359 &	3.8919
+ \\ \hline
+	\end{tabular}
+	\caption{The average distance and standard deviations from model 1}
+	\label{sdmodel1}
+\end{table}~\\
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l c c c c c c c c}
+		Landmarks & LM1 & LM2 & LM3 & LM4 & LM5 & LM6 & LM7 & LM8 \\ \hline
+		Average & 4.2249 & 4.7678 & 3.6129 &	4.4391	 & 4.4319	& 5.2091 &	 4.1567 &	5.1568
+ \\ \hline
+		SD & 2.6985 &	3.06024 & 1.6963	& 3.6506 & 	3.4997 &	4.2616 &	2.5724 &	3.8691
+ \\ \hline
+	\end{tabular}
+	\caption{The average distance and standard deviations from model 2}
+	\label{sdmodel2}
+\end{table}~\\[3cm]
+Because the distance between manual and predicted landmarks are presented in pixels. Fig.\ref{expr22avg} shows the statistic on the landmarks when we consider that the maximum error (in pixels) is the average of the distances on landmarks.
+\begin{figure}[h!]
+\centering
+\subfloat[Model 1]{\label{model1loss2}\includegraphics[width=0.5\textwidth]{./images/pronotum_celia_statistic_avg}}~~
+\subfloat[Model 2]{\label{model2loss2}\includegraphics[width=0.5\textwidth]{./images/pronotum_pmodel_statistic_avg}}
+\caption{The proportions of well predicted landmarks on each model by average}
+\label{expr22avg}
+\end{figure}~\\
+
+\fi
+\section{Conclusions}
+In this study, we proposed a CNN to predict the landmarks on beetles images. The model is evaluated on five datasets corresponding five parts of the beetle: left mandible, right mandible, pronotum, body, and head. For each dataset, the model has been trained in several times with different images data. Then, the trained model is evaluated with the corresponding test set. At the end, the coordinates of the landmarks on all the images in each dataset have been predicted. Three correlation methods have been used to calculate the coefficient between manual landmarks and predicted landmarks. Besides, a statistic based on the distance between manual and predict landmarks is also calculated. A standard deviation (SD) is used to quantify the dispersion of a set of distances. From two evaluation ways, the coefficients are enough good to precise when we consider the statistic problem. But, when we stay on the side of the image, the results are not good as we expect.
+\bibliographystyle{unsrt}
+\bibliography{includes/references}
+\pagebreak
+\appendix
+\label{appendix}
+\section*{Appendix: A comparison on parameters of the networks}
+The number of layers in the model are shown in Table \ref{numlayers}.
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l p{1.2cm} p{3cm} p{2cm} p{1.2cm} p{2cm} p{2cm}}
+		Model & $N^o$ layers & Input size & $N^o$ CONVs & $N^o$ POOLs & $N^o$ Dropout & $N^o$ FC \\ \hline
+		model & 13 & $1 \times 256 \times 192$ & 6 & 3 & 4 & 3 \\ \hline
+	\end{tabular}
+	\caption{The number of layer types in each model}
+	\label{numlayers}
+\end{table}~\\
+The detail parameters in each layer of the models are shown in Table \ref{modelparameters}.
+\begin{table}[h!]
+	\centering
+	\begin{tabular}{l p{3cm} }
+		layers &  model  \\ \hline
+		input & $1 \times 256 \times 192$ \\ \hline
+ 		layer 1 & CONV(32,3,1,0) \\ \hline
+		layer 2 & POOL(2,2,0) \\ \hline
+		layer 3 & \textbf{DROP(0.1)} \\ \hline
+		layer 4 & CONV(64,2,1,0) \\ \hline
+		layer 5 & POOL(2,2,0) \\ \hline
+		layer 6 & \textbf{DROP(0.2)} \\ \hline
+		layer 7 & CONV(128,2,1,0) \\ \hline
+		layer 8 & POOL(2,2,0) \\ \hline
+		layer 9 & \textbf{DROP(0.3)} \\ \hline
+		layer 10 & FC(1000) \\ \hline
+		layer 11 & \textbf{DROP(0.5)} \\ \hline
+		layer 12& FC(1000) \\ \hline
+		layer 13 & FC(32/36/16/22/20) \\ \hline
+	\end{tabular}
+	\caption{The parameters at each layer of the model}
+	\label{modelparameters}
+\end{table}~\\
+Which:
+\begin{itemize}
+	\item CONV(x,y,z,t): convolutional layer with the parameters: \textit{x = number of filters, y = size of filter matrix, z = stride value, t = padding value}
+	\item POOL(y,z,t): maximum pooling layer with: \textit{y = size of filter, z = stride value, t = padding value}
+	\item DROP(p): dropout layer with \textit{p is the dropout ratio}
+	\item FC(x): full-connected layer with \textit{x is the number of output}
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,29 @@
+\begin{thebibliography}{1}
+
+\bibitem{lasagne}
+Sander Dieleman, Jan Schlüter, Colin Raffel, Eben Olson, Søren~Kaae
+  Sønderby, Daniel Nouri, et~al.
+\newblock Lasagne: First release., August 2015.
+
+\bibitem{lecun2012efficient}
+Yann~A LeCun, L{\'e}on Bottou, Genevieve~B Orr, and Klaus-Robert M{\"u}ller.
+\newblock Efficient backprop.
+\newblock In {\em Neural networks: Tricks of the trade}, pages 9--48. Springer,
+  2012.
+
+\bibitem{pallant2013spss}
+Julie Pallant.
+\newblock {\em SPSS survival manual}.
+\newblock McGraw-Hill Education (UK), 2013.
+
+\bibitem{myers2010research}
+Jerome~L Myers, Arnold Well, and Robert~Frederick Lorch.
+\newblock {\em Research design and statistical analysis}.
+\newblock Routledge, 2010.
+
+\bibitem{kendall1938new}
+Maurice~G Kendall.
+\newblock A new measure of rank correlation.
+\newblock {\em Biometrika}, 30(1/2):81--93, 1938.
+
+\end{thebibliography}
