@@ -61,10 +61,10 @@ In practical, convergence is usually faster if the average of each input variabl
 
 For each part, the network is training and validation with many times (called round). For each time, the training dataset is changed following the way to choose the test dataset (i.e circular). At the end, we can obtain the predicted landmarks of all images in the dataset by combining all the  testing images corresponding with the training model. 
 
-The predicted landmarks are evaluated by two ways: calculating correlation coefficient and computing the statistic based on the number of landmarks has good prediction.
-The correlation coefficient is calculated by using three methods: Pearson\cite{pallant2013spss}, Spearman\cite{myers2010research}, and Kendall\cite{kendall1938new}. The good prediction statistic is computed based on the distance between manual and predicted landmarks. Firstly, the distance between manual and prediction one is calculated. Then, the average distance of this landmark on all images has been computed. A predicted landmark is considered as well prediction if the distance between it and the corresponding manual is less than average value.
+The predicted landmarks are evaluated by two ways: calculating correlation coefficient and computing the statistic based on the number of landmarks has well prediction.
+The correlation coefficient is calculated by using three methods: Pearson\cite{pallant2013spss}, Spearman\cite{myers2010research}, and Kendall\cite{kendall1938new}. The well prediction statistic is computed based on the distance between manual and predicted landmarks. Firstly, the distance between manual and prediction one is calculated. Then, the average distance of this landmark on all images has been computed. A predicted landmark is considered as well prediction if the distance between it and the corresponding manual is less than average value.
 
-This section presents the experimental on all parts of Beetle. For each part, we describe the losses (training and validation), the correlation coefficient and the statistic of good prediction.
+This section presents the experimental on all parts of Beetle. For each part, we describe the losses (training and validation), the correlation coefficient and the statistic of well prediction. All of the experiment results have been provided on GitHub\footnote{•}.
 \pagebreak
 %left mandible, right mandible, pronotum, body, and head
 \subsection{Left mandible part}
@@ -302,7 +302,7 @@ In this study, we proposed a CNN to predict the landmarks on beetles images. The
 \pagebreak
 \appendix
 \label{appendix}
-\section*{Appendix: A comparison on parameters of the networks}
+\section{Appendix: A comparison on parameters of the networks}
 The number of layers in the model are shown in Table \ref{numlayers}.
 \begin{table}[h!]
 	\centering
@@ -343,5 +343,10 @@ Which:
 	\item DROP(p): dropout layer with \textit{p is the dropout ratio}
 	\item FC(x): full-connected layer with \textit{x is the number of output}
 \end{itemize}
-
+\section{Experiment results}
+All of the experiment results is provided at .... Each folder contains the results corresponding to each beetle's part. In each folder, we provide the output model(trained), losses curves, and some result images (first sixteenth images of each test set). The structure of each folder is followed:
+\begin{itemize}
+	\item Folder \textbf{models} contains the output models following each training round,
+	\item Folder \textbf{test} contains the loss curves during training (and validation) and the prediction on test images (top 16) for each training round.
+\end{itemize}
 \end{document}
