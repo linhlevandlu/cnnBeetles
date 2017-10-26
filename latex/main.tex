@@ -16,7 +16,7 @@ In this study, we present a convolutional neural network (CNN) which is used to 
 
 \section{Convolutional neural network}
 \subsection{Architecture}
-The network includes three convolutional(CONV) layers followed by three maximum pooling(POOL) layers, four dropouts(DROP) layers, and three full connected(FC) layers (Fig.\ref{pmodel}). The input of the network is the gray-scale image with the size of $256 \times 192$. The depth of network can be expressed by increasing of the deep at each convolutional layer. They are increased from $32, 64,$ and $128$ from the first CONV layer to the third CONV layer with different filter sizes. While, the filter sizes are kept in the same size for every POOL layers. The dropout ratios of the DROP layers increase from the first to the end: $0.1, 0.2, 0.3, $ and $0.5$. At the end of the network, three full connected are set up to predict the landmarks. The first two FC layers have the same outputs($1000$) while the output at the last FC has been change to correspond with the number of landmarks. The detail parameters at each layer are presented in Appendix. The model is implemented by Lassagne framework\cite{lasagne}.
+The network includes three convolutional(CONV) layers followed by three maximum pooling(POOL) layers, four dropouts(DROP) layers, and three full connected(FC) layers (Fig.\ref{pmodel}). The input of the network is the gray-scale image with the size of $256 \times 192$. The depth of network can be expressed by increasing of the deep at each convolutional layer. They are increased from $32, 64,$ and $128$ from the first CONV layer to the third CONV layer with different filter sizes. While, the filter sizes are kept in the same size for every POOL layers. The dropout ratios of the DROP layers increase from the first to the end: $0.1, 0.2, 0.3, $ and $0.5$. At the end of the network, three full connected are set up to predict the landmarks. The first two FC layers have the same outputs($1000$) while the output at the last FC has been change to correspond with the number of landmarks. The detail parameters at each layer are presented in Appendix \ref{apa}. The model is implemented by Lassagne framework\cite{lasagne}.
 \begin{figure}[h!]
 	\centering
 	\includegraphics[scale=0.45]{images/model3_dropout}
@@ -64,7 +64,7 @@ For each part, the network is training and validation with many times (called ro
 The predicted landmarks are evaluated by two ways: calculating correlation coefficient and computing the statistic based on the number of landmarks has well prediction.
 The correlation coefficient is calculated by using three methods: Pearson\cite{pallant2013spss}, Spearman\cite{myers2010research}, and Kendall\cite{kendall1938new}. The well prediction statistic is computed based on the distance between manual and predicted landmarks. Firstly, the distance between manual and prediction one is calculated. Then, the average distance of this landmark on all images has been computed. A predicted landmark is considered as well prediction if the distance between it and the corresponding manual is less than average value.
 
-This section presents the experimental on all parts of Beetle. For each part, we describe the losses (training and validation), the correlation coefficient and the statistic of well prediction. All of the experiment results have been provided on GitHub\footnote{•}.
+This section presents the experimental on all parts of Beetle. For each part, we describe the losses (training and validation), the correlation coefficient and the statistic of well prediction. All of the experiment results have been provided on GitHub\footnote{https://github.com/linhlevandlu/cnnBeetles/tree/master/data}(Appendix \ref{apb}).
 \pagebreak
 %left mandible, right mandible, pronotum, body, and head
 \subsection{Left mandible part}
@@ -321,6 +321,7 @@ In this study, we proposed a CNN to predict the landmarks on beetles images. The
 \end{center}
 
 \section{A comparison on parameters of the networks}
+\label{apa}
 The number of layers in the model are shown in Table \ref{numlayers}.
 \begin{table}[h!]
 	\centering
@@ -362,7 +363,8 @@ Which:
 	\item FC(x): full-connected layer with \textit{x is the number of output}
 \end{itemize}
 \section{Experiment results}
-All of the experiment results is provided at .... Each folder contains the results corresponding to each beetle's part. In each folder, we provide the losses curves, result images(first sixteenth images of each test set), and the prediction landmarks(in csv file). Each folder contains:
+\label{apb}
+All of the experiment results is provided on GitHub. Each folder contains the results corresponding to each beetle's part. In each folder, we provide the losses curves, result images(first sixteenth images of each test set), and the prediction landmarks(in csv file). Each folder contains:
 \begin{itemize}
 	%\item Folder \textbf{models} contains the output models following each training round,
 	\item Folder \textbf{test}: contains the loss curves during training (and validation) and the prediction on test images (top 16) for each training round,
