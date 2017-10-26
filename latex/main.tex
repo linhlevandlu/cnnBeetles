@@ -177,31 +177,46 @@ The information of each training round on pronotum is shown in Table \ref{pronol
 	\centering
 	\begin{tabular}{l p{2cm} p{2.4cm} p{2.6cm} p{2.2cm} p{2.2cm}}
 	Round & Total images & Testing index (from-to) & Training index (from-to) & Training loss & Validation loss \\ \hline
-	r1 & 293 & 1-33 & 34-293 & 0.00075 & 0.00162 \\ \hline
-	r2 & 293 & 34-66 & remaining & 0.00081 & 0.00208 \\ \hline
-	r3 & 293 & 67-99 & remaining & 0.00076 & 0.00158 \\ \hline
-	r4 & 293 & 100-132 & remaining & 0.00075 & 0.00167 \\ \hline
-	r5 & 293 & 133-165 & remaining & 0.00079 & 0.00206 \\ \hline
-	r6 & 293 & 166-198 & remaining & 0.00080 & 0.00263 \\ \hline
-	r7 & 293 & 199-231 & remaining & 0.00081 & 0.00245 \\ \hline
-	r8 & 293 & 2232-264 & remaining & 0.00080 & 0.00194 \\ \hline
-	r9 & 293 & 265-293 & remaining & 0.00079 & 0.00157 \\ \hline	
+	r1 & 293 & 1-33 & 34-293 & 0.00018 & 0.00019 \\ \hline
+	r2 & 293 & 34-66 & remaining & 0.00019 & 0.00021 \\ \hline
+	r3 & 293 & 67-99 & remaining & 0.00019 & 0.00026 \\ \hline
+	r4 & 293 & 100-132 & remaining & 0.00021 & 0.00029 \\ \hline
+	r5 & 293 & 133-165 & remaining & 0.00021 & 0.00029 \\ \hline
+	r6 & 293 & 166-198 & remaining & 0.00019 & 0.00018 \\ \hline
+	r7 & 293 & 199-231 & remaining & 0.00018 & 0.00015 \\ \hline
+	r8 & 293 & 2232-264 & remaining & 0.00018 & 0.00021 \\ \hline
+	r9 & 293 & 265-293 & remaining & 0.00020 & 0.00027 \\ \hline	
 	\end{tabular}
 	\caption{The training loss and validation loss at each training round of pronotum}
 	\label{pronoloss}
 \end{table}~\\
+Fig.\ref{losspronotumcurves} shows the curves of training and validation losses of two rounds on pronotum.
+\begin{figure}[h!]
+\centering
+\subfloat[Round 1]{\label{model1loss2}\includegraphics[width=0.5\textwidth]{./images/cnnmodel3_5000_pronotum_1000_output_v10_loss}}~~
+\subfloat[Round 8]{\label{model2loss2}\includegraphics[width=0.5\textwidth]{./images/cnnmodel3_5000_pronotum_1000_output_v18_loss}}
+\caption{The losses curves of training and validation of two training rounds of pronotum}
+\label{losspronotumcurves}
+\end{figure}~\\
 Table \ref{corrprono} shows the correlation coefficient between manual landmarks and predicted landmarks on pronotum part.
 \begin{table}[h!]
 	\centering
 	\begin{tabular}{l c c}
 		Method & x correlation & y correlation \\ \hline
-		Pearson & $0.0$ & $0.0$ \\ \hline
-		Spearman & $0.0$ & $0.0$ \\ \hline
-		Kendall & $0.0$ & $0.0$ \\ \hline
+		Pearson & $0.0.9974111$ & $0.9979428$ \\ \hline
+		Spearman & $0.9944886$ & $0.9892089$ \\ \hline
+		Kendall & $0.9403294$ & $0.9141635$ \\ \hline
 	\end{tabular}
 	\caption{The correlation between manual and predicted landmarks on pronotum images}
 	\label{corrprono}
-\end{table}
+\end{table}~\\
+Fig.\ref{pronofig} shows the proportions of well predicted landmarks of all pronotum images.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.5]{images/pronotum}
+	\caption{The proportion of well predicted landmarks on pronotum part}
+	\label{pronofig}
+\end{figure}~\\[1cm]
 \subsection{Body part}
 The information of each training round on body part is shown in Table \ref{bodyloss}.
 \begin{table}[h!]
@@ -267,7 +282,7 @@ The information of each training round on head part is shown in Table \ref{headl
 	\caption{The training loss and validation loss at each training round of head}
 	\label{headloss}
 \end{table}~\\
-Fig.\ref{losstetecurves} shows the curves of training and validation losses of two rounds on right mandible.
+Fig.\ref{losstetecurves} shows the curves of training and validation losses of two rounds on right mandible.\\[0.1cm]
 \begin{figure}[h!]
 \centering
 \subfloat[Round 1]{\label{model1loss2}\includegraphics[width=0.5\textwidth]{./images/cnnmodel3_5000_tete_1000_output_v10_loss}}~~
@@ -301,8 +316,11 @@ In this study, we proposed a CNN to predict the landmarks on beetles images. The
 \bibliography{includes/references}
 \pagebreak
 \appendix
-\label{appendix}
-\section{Appendix: A comparison on parameters of the networks}
+\begin{center}
+\textbf{\LARGE{APPENDIX}}
+\end{center}
+
+\section{A comparison on parameters of the networks}
 The number of layers in the model are shown in Table \ref{numlayers}.
 \begin{table}[h!]
 	\centering
@@ -344,9 +362,11 @@ Which:
 	\item FC(x): full-connected layer with \textit{x is the number of output}
 \end{itemize}
 \section{Experiment results}
-All of the experiment results is provided at .... Each folder contains the results corresponding to each beetle's part. In each folder, we provide the output model(trained), losses curves, and some result images (first sixteenth images of each test set). The structure of each folder is followed:
+All of the experiment results is provided at .... Each folder contains the results corresponding to each beetle's part. In each folder, we provide the losses curves, result images(first sixteenth images of each test set), and the prediction landmarks(in csv file). Each folder contains:
 \begin{itemize}
-	\item Folder \textbf{models} contains the output models following each training round,
-	\item Folder \textbf{test} contains the loss curves during training (and validation) and the prediction on test images (top 16) for each training round.
+	%\item Folder \textbf{models} contains the output models following each training round,
+	\item Folder \textbf{test}: contains the loss curves during training (and validation) and the prediction on test images (top 16) for each training round,
+	\item \textbf{CSV} file: contains the information of image, index of landmark, coordinates of manual landmark$(x1,y1)$, and coordinates of predicted landmark$(x2,y2)$.
+	\item The output trained model can be obtained by requesting the authors.
 \end{itemize}
 \end{document}

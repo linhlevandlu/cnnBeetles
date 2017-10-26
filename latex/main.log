@@ -1,15 +1,15 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.24)  25 OCT 2017 20:51
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.8.23)  26 OCT 2017 09:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **main.tex
 (./main.tex
-LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 7 language(s) loaded.
+LaTeX2e <2011/06/27>
+Babel <3.9h> and hyphenation patterns for 78 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
-File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -31,7 +31,7 @@ Package: fullpage 1999/02/23 1.1 (PWD)
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
@@ -59,40 +59,40 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@dimlist=\toks15
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2016/03/03 v2.15a AMS math features
+Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip44
 
 For additional information on amsmath, use the `?' option.
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-Package: amstext 2000/06/29 v2.01 AMS text
+Package: amstext 2000/06/29 v2.01
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
-File: amsgen.sty 1999/11/30 v2.0 generic functions
+File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen111
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
-Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen112
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count90
-LaTeX Info: Redefining \frac on input line 199.
+LaTeX Info: Redefining \frac on input line 210.
 \uproot@=\count91
 \leftroot@=\count92
-LaTeX Info: Redefining \overline on input line 297.
+LaTeX Info: Redefining \overline on input line 306.
 \classnum@=\count93
 \DOTSCASE@=\count94
-LaTeX Info: Redefining \ldots on input line 394.
-LaTeX Info: Redefining \dots on input line 397.
-LaTeX Info: Redefining \cdots on input line 518.
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
 \Mathstrutbox@=\box26
 \strutbox@=\box27
 \big@size=\dimen113
-LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \macc@depth=\count95
 \c@MaxMatrixCols=\count96
 \dotsspace@=\muskip10
@@ -113,18 +113,18 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
 \multlinegap=\skip45
 \multlinetaggap=\skip46
 \mathdisplay@stack=\toks20
-LaTeX Info: Redefining \[ on input line 2735.
-LaTeX Info: Redefining \] on input line 2736.
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 67.
+Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 57.
 \captionmargin=\dimen120
 \captionmargin@=\dimen121
 \captionwidth=\dimen122
@@ -150,18 +150,18 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 \sf@bottom=\skip51
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 95.
+Package graphics Info: Driver file: pdftex.def on input line 91.
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
@@ -177,6 +177,18 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen128
 \Gin@req@width=\dimen129
 ) (./main.aux
+
+LaTeX Warning: Label `model1loss2' multiply defined.
+
+
+LaTeX Warning: Label `sub@model1loss2' multiply defined.
+
+
+LaTeX Warning: Label `model2loss2' multiply defined.
+
+
+LaTeX Warning: Label `sub@model2loss2' multiply defined.
+
 
 LaTeX Warning: Label `model1loss2' multiply defined.
 
@@ -353,7 +365,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 75--75
 
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 93.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 93.
@@ -456,167 +468,201 @@ Underfull \hbox (badness 10000) in paragraph at lines 179--179
 []\OT1/cmr/m/n/12 Validation
  []
 
+
+<./images/cnnmodel3_5000_pronotum_1000_output_v10_loss.png, id=40, 578.16pt x 4
+33.62pt>
+File: ./images/cnnmodel3_5000_pronotum_1000_output_v10_loss.png Graphic file (t
+ype png)
+ <use ./images/cnnmodel3_5000_pronotum_1000_output_v10_loss.png>
+Package pdftex.def Info: ./images/cnnmodel3_5000_pronotum_1000_output_v10_loss.
+png used on input line 196.
+(pdftex.def)             Requested size: 241.84843pt x 181.38472pt.
+
+<./images/cnnmodel3_5000_pronotum_1000_output_v18_loss.png, id=41, 578.16pt x 4
+33.62pt>
+File: ./images/cnnmodel3_5000_pronotum_1000_output_v18_loss.png Graphic file (t
+ype png)
+ <use ./images/cnnmodel3_5000_pronotum_1000_output_v18_loss.png>
+Package pdftex.def Info: ./images/cnnmodel3_5000_pronotum_1000_output_v18_loss.
+png used on input line 197.
+(pdftex.def)             Requested size: 241.84843pt x 181.38472pt.
+
+Overfull \hbox (7.83325pt too wide) in paragraph at lines 196--198
+ [][]   [] 
+ []
+
+<images/pronotum.jpg, id=42, 607.26875pt x 341.275pt>
+File: images/pronotum.jpg Graphic file (type jpg)
+
+<use images/pronotum.jpg>
+Package pdftex.def Info: images/pronotum.jpg used on input line 216.
+(pdftex.def)             Requested size: 303.63364pt x 170.63707pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 175--220
+
+ []
+
 [6 <./images/cnnmodel3_5000_md_1000_output_v10_loss.png> <./images/cnnmodel3_50
 00_md_1000_output_v18_loss.png> <./images/md.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 210--210
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 225--225
 []\OT1/cmr/m/n/12 Total
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 210--210
+Underfull \hbox (badness 10000) in paragraph at lines 225--225
 []\OT1/cmr/m/n/12 Training
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 210--210
+Underfull \hbox (badness 10000) in paragraph at lines 225--225
 []\OT1/cmr/m/n/12 Validation
  []
 
 
-<./images/cnnmodel3_5000_elytre_1000_output_v10_loss.png, id=45, 578.16pt x 433
+<./images/cnnmodel3_5000_elytre_1000_output_v10_loss.png, id=48, 578.16pt x 433
 .62pt>
 File: ./images/cnnmodel3_5000_elytre_1000_output_v10_loss.png Graphic file (typ
 e png)
  <use ./images/cnnmodel3_5000_elytre_1000_output_v10_loss.png>
 Package pdftex.def Info: ./images/cnnmodel3_5000_elytre_1000_output_v10_loss.pn
-g used on input line 227.
+g used on input line 242.
 (pdftex.def)             Requested size: 241.84843pt x 181.38472pt.
 
-<./images/cnnmodel3_5000_elytre_1000_output_v18_loss.png, id=46, 578.16pt x 433
+<./images/cnnmodel3_5000_elytre_1000_output_v18_loss.png, id=49, 578.16pt x 433
 .62pt>
 File: ./images/cnnmodel3_5000_elytre_1000_output_v18_loss.png Graphic file (typ
 e png)
  <use ./images/cnnmodel3_5000_elytre_1000_output_v18_loss.png>
 Package pdftex.def Info: ./images/cnnmodel3_5000_elytre_1000_output_v18_loss.pn
-g used on input line 228.
+g used on input line 243.
 (pdftex.def)             Requested size: 241.84843pt x 181.38472pt.
 
-Overfull \hbox (7.83325pt too wide) in paragraph at lines 227--229
+Overfull \hbox (7.83325pt too wide) in paragraph at lines 242--244
  [][]   [] 
  []
 
-<images/elytre.jpg, id=47, 613.29124pt x 352.31625pt>
+<images/elytre.jpg, id=50, 613.29124pt x 352.31625pt>
 File: images/elytre.jpg Graphic file (type jpg)
  <use images/elytre.jpg>
-Package pdftex.def Info: images/elytre.jpg used on input line 247.
+Package pdftex.def Info: images/elytre.jpg used on input line 262.
 (pdftex.def)             Requested size: 429.30093pt x 246.61969pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 206--251
+Underfull \hbox (badness 10000) in paragraph at lines 221--266
 
  []
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 256--256
+[7 <./images/cnnmodel3_5000_pronotum_1000_output_v10_loss.png> <./images/cnnmod
+el3_5000_pronotum_1000_output_v18_loss.png>] [8 <./images/pronotum.jpg> <./imag
+es/cnnmodel3_5000_elytre_1000_output_v10_loss.png> <./images/cnnmodel3_5000_ely
+tre_1000_output_v18_loss.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 271--271
 []\OT1/cmr/m/n/12 Total
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 256--256
+Underfull \hbox (badness 10000) in paragraph at lines 271--271
 []\OT1/cmr/m/n/12 Training
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 256--256
+Underfull \hbox (badness 10000) in paragraph at lines 271--271
 []\OT1/cmr/m/n/12 Validation
  []
 
 
-<./images/cnnmodel3_5000_tete_1000_output_v10_loss.png, id=52, 578.16pt x 433.6
+<./images/cnnmodel3_5000_tete_1000_output_v10_loss.png, id=62, 578.16pt x 433.6
 2pt>
 File: ./images/cnnmodel3_5000_tete_1000_output_v10_loss.png Graphic file (type 
 png)
  <use ./images/cnnmodel3_5000_tete_1000_output_v10_loss.png>
 Package pdftex.def Info: ./images/cnnmodel3_5000_tete_1000_output_v10_loss.png 
-used on input line 273.
+used on input line 288.
 (pdftex.def)             Requested size: 241.84843pt x 181.38472pt.
 
-<./images/cnnmodel3_5000_tete_1000_output_v18_loss.png, id=53, 578.16pt x 433.6
+<./images/cnnmodel3_5000_tete_1000_output_v18_loss.png, id=63, 578.16pt x 433.6
 2pt>
 File: ./images/cnnmodel3_5000_tete_1000_output_v18_loss.png Graphic file (type 
 png)
  <use ./images/cnnmodel3_5000_tete_1000_output_v18_loss.png>
 Package pdftex.def Info: ./images/cnnmodel3_5000_tete_1000_output_v18_loss.png 
-used on input line 274.
+used on input line 289.
 (pdftex.def)             Requested size: 241.84843pt x 181.38472pt.
 
-Overfull \hbox (7.83325pt too wide) in paragraph at lines 273--275
+Overfull \hbox (7.83325pt too wide) in paragraph at lines 288--290
  [][]   [] 
  []
 
-<images/tete.jpg, id=54, 565.11125pt x 291.0875pt>
+<images/tete.jpg, id=64, 565.11125pt x 291.0875pt>
 File: images/tete.jpg Graphic file (type jpg)
  <use images/tete.jpg>
-Package pdftex.def Info: images/tete.jpg used on input line 293.
+Package pdftex.def Info: images/tete.jpg used on input line 308.
 (pdftex.def)             Requested size: 367.31795pt x 189.20462pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 252--297
+Underfull \hbox (badness 10000) in paragraph at lines 267--312
 
  []
 
-[8 <./images/cnnmodel3_5000_elytre_1000_output_v10_loss.png> <./images/cnnmodel
-3_5000_elytre_1000_output_v18_loss.png> <./images/elytre.jpg>]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-(./main.bbl [9 <./images/cnnmodel3_5000_tete_1000_output_v10_loss.png> <./image
-s/cnnmodel3_5000_tete_1000_output_v18_loss.png>]
+[9 <./images/elytre.jpg>] (./main.bbl [10 <./images/cnnmodel3_5000_tete_1000_ou
+tput_v10_loss.png> <./images/cnnmodel3_5000_tete_1000_output_v18_loss.png> <./i
+mages/tete.jpg>]
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¼ in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¸ in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¸ in font cmr12!
-) [10 <./images/tete.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 310--310
+) [11]
+Underfull \hbox (badness 10000) in paragraph at lines 328--328
 []$\OML/cmm/m/it/12 N[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 310--310
+Underfull \hbox (badness 10000) in paragraph at lines 328--328
 []$\OML/cmm/m/it/12 N[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 310--310
+Underfull \hbox (badness 10000) in paragraph at lines 328--328
 []$\OML/cmm/m/it/12 N[]$
  []
 
 
-Overfull \hbox (4.10501pt too wide) in paragraph at lines 310--310
+Overfull \hbox (4.10501pt too wide) in paragraph at lines 328--328
 \OT1/cmr/m/n/12 POOLs| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 310--310
+Underfull \hbox (badness 10000) in paragraph at lines 328--328
 []$\OML/cmm/m/it/12 N[]$
  []
 
 
-Overfull \hbox (4.06303pt too wide) in paragraph at lines 328--328
+Overfull \hbox (4.06303pt too wide) in paragraph at lines 346--346
 []\OT1/cmr/m/n/12 CONV(128,2,1,0)| 
  []
 
 
-Overfull \hbox (21.8573pt too wide) in paragraph at lines 334--334
+Overfull \hbox (21.8573pt too wide) in paragraph at lines 352--352
 []\OT1/cmr/m/n/12 FC(32/36/16/22/20)| 
  []
 
-[11] [12] (./main.aux)
+[12] [13] (./main.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3942 strings out of 494883
- 60632 string characters out of 6178693
- 130431 words of memory out of 5000000
- 7186 multiletter control sequences out of 15000+600000
- 12470 words of font info for 45 fonts, out of 8000000 for 9000
- 36 hyphenation exceptions out of 8191
- 44i,11n,49p,1233b,362s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 3935 strings out of 493304
+ 60983 string characters out of 6139871
+ 134630 words of memory out of 5000000
+ 7334 multiletter control sequences out of 15000+600000
+ 12777 words of font info for 46 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 44i,11n,47p,1233b,362s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
@@ -629,10 +675,10 @@ sfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
 10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (12 pages, 552171 bytes).
+Output written on main.pdf (13 pages, 586597 bytes).
 PDF statistics:
- 117 PDF objects out of 1000 (max. 8388607)
- 68 compressed objects within 1 object stream
+ 126 PDF objects out of 1000 (max. 8388607)
+ 71 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 66 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
