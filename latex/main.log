@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.8.23)  26 OCT 2017 09:54
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.8.23)  26 OCT 2017 13:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -397,268 +397,297 @@ Overfull \hbox (4.3279pt too wide) in paragraph at lines 123--124
  [][] 
  []
 
+<images/mgSIFT.jpg, id=29, 748.7975pt x 466.74374pt>
+File: images/mgSIFT.jpg Graphic file (type jpg)
+ <use images/mgSIFT.jpg>
+Package pdftex.def Info: images/mgSIFT.jpg used on input line 130.
+(pdftex.def)             Requested size: 396.86078pt x 247.373pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--134
+
+ []
+
 [4 <./images/cnnmodel3_5000_mg_1000_output_v10.png> <./images/cnnmodel3_5000_mg
 _1000_output_v18_loss.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 132--132
+Underfull \hbox (badness 10000) in paragraph at lines 139--139
 []\OT1/cmr/m/n/12 Total
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--132
+Underfull \hbox (badness 10000) in paragraph at lines 139--139
 []\OT1/cmr/m/n/12 Training
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 132--132
+Underfull \hbox (badness 10000) in paragraph at lines 139--139
 []\OT1/cmr/m/n/12 Validation
  []
 
 
-<./images/cnnmodel3_5000_md_1000_output_v10_loss.png, id=34, 578.16pt x 433.62p
+<./images/cnnmodel3_5000_md_1000_output_v10_loss.png, id=35, 578.16pt x 433.62p
 t>
 File: ./images/cnnmodel3_5000_md_1000_output_v10_loss.png Graphic file (type pn
 g)
  <use ./images/cnnmodel3_5000_md_1000_output_v10_loss.png>
 Package pdftex.def Info: ./images/cnnmodel3_5000_md_1000_output_v10_loss.png us
-ed on input line 150.
+ed on input line 157.
 (pdftex.def)             Requested size: 241.84843pt x 181.38472pt.
 
-<./images/cnnmodel3_5000_md_1000_output_v18_loss.png, id=35, 578.16pt x 433.62p
+<./images/cnnmodel3_5000_md_1000_output_v18_loss.png, id=36, 578.16pt x 433.62p
 t>
 File: ./images/cnnmodel3_5000_md_1000_output_v18_loss.png Graphic file (type pn
 g)
  <use ./images/cnnmodel3_5000_md_1000_output_v18_loss.png>
 Package pdftex.def Info: ./images/cnnmodel3_5000_md_1000_output_v18_loss.png us
-ed on input line 151.
+ed on input line 158.
 (pdftex.def)             Requested size: 241.84843pt x 181.38472pt.
 
-Overfull \hbox (7.83325pt too wide) in paragraph at lines 150--152
+Overfull \hbox (7.83325pt too wide) in paragraph at lines 157--159
  [][]   [] 
  []
 
-<images/md.jpg, id=36, 787.94376pt x 396.48125pt>
+<images/md.jpg, id=37, 787.94376pt x 396.48125pt>
 File: images/md.jpg Graphic file (type jpg)
  <use images/md.jpg>
-Package pdftex.def Info: images/md.jpg used on input line 170.
+Package pdftex.def Info: images/md.jpg used on input line 177.
 (pdftex.def)             Requested size: 512.15738pt x 257.70975pt.
 
-Overfull \hbox (28.46051pt too wide) in paragraph at lines 170--171
+Overfull \hbox (28.46051pt too wide) in paragraph at lines 177--178
  [][] 
  []
 
+<images/mdSIFT.jpg, id=38, 852.18375pt x 431.6125pt>
+File: images/mdSIFT.jpg Graphic file (type jpg)
+ <use images/mdSIFT.jpg>
+Package pdftex.def Info: images/mdSIFT.jpg used on input line 184.
+(pdftex.def)             Requested size: 468.7025pt x 237.3876pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 135--188
+
+ []
+
+[5 <./images/mg.jpg> <./images/mgSIFT.jpg>]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[5 <./images/mg.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 179--179
+[6 <./images/cnnmodel3_5000_md_1000_output_v10_loss.png> <./images/cnnmodel3_50
+00_md_1000_output_v18_loss.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 193--193
 []\OT1/cmr/m/n/12 Total
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 179--179
+Underfull \hbox (badness 10000) in paragraph at lines 193--193
 []\OT1/cmr/m/n/12 Training
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 179--179
+Underfull \hbox (badness 10000) in paragraph at lines 193--193
 []\OT1/cmr/m/n/12 Validation
  []
 
 
-<./images/cnnmodel3_5000_pronotum_1000_output_v10_loss.png, id=40, 578.16pt x 4
+<./images/cnnmodel3_5000_pronotum_1000_output_v10_loss.png, id=47, 578.16pt x 4
 33.62pt>
 File: ./images/cnnmodel3_5000_pronotum_1000_output_v10_loss.png Graphic file (t
 ype png)
  <use ./images/cnnmodel3_5000_pronotum_1000_output_v10_loss.png>
 Package pdftex.def Info: ./images/cnnmodel3_5000_pronotum_1000_output_v10_loss.
-png used on input line 196.
+png used on input line 210.
 (pdftex.def)             Requested size: 241.84843pt x 181.38472pt.
 
-<./images/cnnmodel3_5000_pronotum_1000_output_v18_loss.png, id=41, 578.16pt x 4
+<./images/cnnmodel3_5000_pronotum_1000_output_v18_loss.png, id=48, 578.16pt x 4
 33.62pt>
 File: ./images/cnnmodel3_5000_pronotum_1000_output_v18_loss.png Graphic file (t
 ype png)
  <use ./images/cnnmodel3_5000_pronotum_1000_output_v18_loss.png>
 Package pdftex.def Info: ./images/cnnmodel3_5000_pronotum_1000_output_v18_loss.
-png used on input line 197.
+png used on input line 211.
 (pdftex.def)             Requested size: 241.84843pt x 181.38472pt.
 
-Overfull \hbox (7.83325pt too wide) in paragraph at lines 196--198
+Overfull \hbox (7.83325pt too wide) in paragraph at lines 210--212
  [][]   [] 
  []
 
-<images/pronotum.jpg, id=42, 607.26875pt x 341.275pt>
+<images/pronotum.jpg, id=49, 607.26875pt x 341.275pt>
 File: images/pronotum.jpg Graphic file (type jpg)
 
 <use images/pronotum.jpg>
-Package pdftex.def Info: images/pronotum.jpg used on input line 216.
+Package pdftex.def Info: images/pronotum.jpg used on input line 230.
 (pdftex.def)             Requested size: 303.63364pt x 170.63707pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 175--220
+Underfull \hbox (badness 10000) in paragraph at lines 189--234
 
  []
 
-[6 <./images/cnnmodel3_5000_md_1000_output_v10_loss.png> <./images/cnnmodel3_50
-00_md_1000_output_v18_loss.png> <./images/md.jpg>]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[7 <./images/md.jpg> <./images/mdSIFT.jpg>]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 225--225
+Underfull \hbox (badness 10000) in paragraph at lines 239--239
 []\OT1/cmr/m/n/12 Total
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 225--225
+Underfull \hbox (badness 10000) in paragraph at lines 239--239
 []\OT1/cmr/m/n/12 Training
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 225--225
+Underfull \hbox (badness 10000) in paragraph at lines 239--239
 []\OT1/cmr/m/n/12 Validation
  []
 
 
-<./images/cnnmodel3_5000_elytre_1000_output_v10_loss.png, id=48, 578.16pt x 433
+<./images/cnnmodel3_5000_elytre_1000_output_v10_loss.png, id=54, 578.16pt x 433
 .62pt>
 File: ./images/cnnmodel3_5000_elytre_1000_output_v10_loss.png Graphic file (typ
 e png)
  <use ./images/cnnmodel3_5000_elytre_1000_output_v10_loss.png>
 Package pdftex.def Info: ./images/cnnmodel3_5000_elytre_1000_output_v10_loss.pn
-g used on input line 242.
+g used on input line 256.
 (pdftex.def)             Requested size: 241.84843pt x 181.38472pt.
 
-<./images/cnnmodel3_5000_elytre_1000_output_v18_loss.png, id=49, 578.16pt x 433
+<./images/cnnmodel3_5000_elytre_1000_output_v18_loss.png, id=55, 578.16pt x 433
 .62pt>
 File: ./images/cnnmodel3_5000_elytre_1000_output_v18_loss.png Graphic file (typ
 e png)
  <use ./images/cnnmodel3_5000_elytre_1000_output_v18_loss.png>
 Package pdftex.def Info: ./images/cnnmodel3_5000_elytre_1000_output_v18_loss.pn
-g used on input line 243.
+g used on input line 257.
 (pdftex.def)             Requested size: 241.84843pt x 181.38472pt.
 
-Overfull \hbox (7.83325pt too wide) in paragraph at lines 242--244
+Overfull \hbox (7.83325pt too wide) in paragraph at lines 256--258
  [][]   [] 
  []
 
-<images/elytre.jpg, id=50, 613.29124pt x 352.31625pt>
+<images/elytre.jpg, id=56, 613.29124pt x 352.31625pt>
 File: images/elytre.jpg Graphic file (type jpg)
  <use images/elytre.jpg>
-Package pdftex.def Info: images/elytre.jpg used on input line 262.
+Package pdftex.def Info: images/elytre.jpg used on input line 276.
 (pdftex.def)             Requested size: 429.30093pt x 246.61969pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 221--266
+Underfull \hbox (badness 10000) in paragraph at lines 235--280
 
  []
 
-[7 <./images/cnnmodel3_5000_pronotum_1000_output_v10_loss.png> <./images/cnnmod
-el3_5000_pronotum_1000_output_v18_loss.png>] [8 <./images/pronotum.jpg> <./imag
+[8 <./images/cnnmodel3_5000_pronotum_1000_output_v10_loss.png> <./images/cnnmod
+el3_5000_pronotum_1000_output_v18_loss.png>] [9 <./images/pronotum.jpg> <./imag
 es/cnnmodel3_5000_elytre_1000_output_v10_loss.png> <./images/cnnmodel3_5000_ely
 tre_1000_output_v18_loss.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 271--271
+Underfull \hbox (badness 10000) in paragraph at lines 285--285
 []\OT1/cmr/m/n/12 Total
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 271--271
+Underfull \hbox (badness 10000) in paragraph at lines 285--285
 []\OT1/cmr/m/n/12 Training
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 271--271
+Underfull \hbox (badness 10000) in paragraph at lines 285--285
 []\OT1/cmr/m/n/12 Validation
  []
 
 
-<./images/cnnmodel3_5000_tete_1000_output_v10_loss.png, id=62, 578.16pt x 433.6
+<./images/cnnmodel3_5000_tete_1000_output_v10_loss.png, id=67, 578.16pt x 433.6
 2pt>
 File: ./images/cnnmodel3_5000_tete_1000_output_v10_loss.png Graphic file (type 
 png)
  <use ./images/cnnmodel3_5000_tete_1000_output_v10_loss.png>
 Package pdftex.def Info: ./images/cnnmodel3_5000_tete_1000_output_v10_loss.png 
-used on input line 288.
+used on input line 302.
 (pdftex.def)             Requested size: 241.84843pt x 181.38472pt.
 
-<./images/cnnmodel3_5000_tete_1000_output_v18_loss.png, id=63, 578.16pt x 433.6
+<./images/cnnmodel3_5000_tete_1000_output_v18_loss.png, id=68, 578.16pt x 433.6
 2pt>
 File: ./images/cnnmodel3_5000_tete_1000_output_v18_loss.png Graphic file (type 
 png)
  <use ./images/cnnmodel3_5000_tete_1000_output_v18_loss.png>
 Package pdftex.def Info: ./images/cnnmodel3_5000_tete_1000_output_v18_loss.png 
-used on input line 289.
+used on input line 303.
 (pdftex.def)             Requested size: 241.84843pt x 181.38472pt.
 
-Overfull \hbox (7.83325pt too wide) in paragraph at lines 288--290
+Overfull \hbox (7.83325pt too wide) in paragraph at lines 302--304
  [][]   [] 
  []
 
-<images/tete.jpg, id=64, 565.11125pt x 291.0875pt>
+<images/tete.jpg, id=69, 565.11125pt x 291.0875pt>
 File: images/tete.jpg Graphic file (type jpg)
  <use images/tete.jpg>
-Package pdftex.def Info: images/tete.jpg used on input line 308.
+Package pdftex.def Info: images/tete.jpg used on input line 322.
 (pdftex.def)             Requested size: 367.31795pt x 189.20462pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 267--312
+Underfull \hbox (badness 10000) in paragraph at lines 281--326
 
  []
 
-[9 <./images/elytre.jpg>] (./main.bbl [10 <./images/cnnmodel3_5000_tete_1000_ou
-tput_v10_loss.png> <./images/cnnmodel3_5000_tete_1000_output_v18_loss.png> <./i
-mages/tete.jpg>]
+[10 <./images/elytre.jpg>] (./main.bbl [11 <./images/cnnmodel3_5000_tete_1000_o
+utput_v10_loss.png> <./images/cnnmodel3_5000_tete_1000_output_v18_loss.png> <./
+images/tete.jpg>]
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¼ in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¸ in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¸ in font cmr12!
-) [11]
-Underfull \hbox (badness 10000) in paragraph at lines 329--329
+) [12]
+Underfull \hbox (badness 10000) in paragraph at lines 343--343
 []$\OML/cmm/m/it/12 N[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--329
+Underfull \hbox (badness 10000) in paragraph at lines 343--343
 []$\OML/cmm/m/it/12 N[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--329
+Underfull \hbox (badness 10000) in paragraph at lines 343--343
 []$\OML/cmm/m/it/12 N[]$
  []
 
 
-Overfull \hbox (4.10501pt too wide) in paragraph at lines 329--329
+Overfull \hbox (4.10501pt too wide) in paragraph at lines 343--343
 \OT1/cmr/m/n/12 POOLs| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--329
+Underfull \hbox (badness 10000) in paragraph at lines 343--343
 []$\OML/cmm/m/it/12 N[]$
  []
 
 
-Overfull \hbox (4.06303pt too wide) in paragraph at lines 347--347
+Overfull \hbox (4.06303pt too wide) in paragraph at lines 361--361
 []\OT1/cmr/m/n/12 CONV(128,2,1,0)| 
  []
 
 
-Overfull \hbox (21.8573pt too wide) in paragraph at lines 353--353
+Overfull \hbox (21.8573pt too wide) in paragraph at lines 367--367
 []\OT1/cmr/m/n/12 FC(32/36/16/22/20)| 
  []
 
-[12] [13] (./main.aux)
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 390--417
+
+ []
+
+[14] (./main.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3937 strings out of 493304
- 60993 string characters out of 6139871
- 134648 words of memory out of 5000000
- 7336 multiletter control sequences out of 15000+600000
+ 3954 strings out of 493304
+ 61264 string characters out of 6139871
+ 134691 words of memory out of 5000000
+ 7351 multiletter control sequences out of 15000+600000
  12777 words of font info for 46 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 44i,11n,47p,1233b,362s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,11n,47p,1261b,362s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
@@ -671,10 +700,10 @@ sfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
 10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (13 pages, 586838 bytes).
+Output written on main.pdf (14 pages, 689405 bytes).
 PDF statistics:
- 126 PDF objects out of 1000 (max. 8388607)
- 71 compressed objects within 1 object stream
+ 131 PDF objects out of 1000 (max. 8388607)
+ 73 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

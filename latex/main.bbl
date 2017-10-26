@@ -26,4 +26,12 @@ Maurice~G Kendall.
 \newblock A new measure of rank correlation.
 \newblock {\em Biometrika}, 30(1/2):81--93, 1938.
 
+\bibitem{le:hal-01571440}
+Van~Linh LE, Marie BEURTON-AIMAR, Adrien KR{\"A}HENB{\"U}HL, and Nicolas
+  PARISEY.
+\newblock {MAELab: a framework to automatize landmark estimation}.
+\newblock In {\em {WSCG 2017}}, 25th International Conference in Central Europe
+  on Computer Graphics, Visualization and Computer Vision'2017, Plzen, Czech
+  Republic, May 2017.
+
 \end{thebibliography}
