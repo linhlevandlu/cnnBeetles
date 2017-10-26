@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.8.23)  26 OCT 2017 13:53
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.8.23)  26 OCT 2017 15:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -670,12 +670,15 @@ Overfull \hbox (21.8573pt too wide) in paragraph at lines 367--367
 []\OT1/cmr/m/n/12 FC(32/36/16/22/20)| 
  []
 
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 390--417
+
+Underfull \hbox (badness 10000) in paragraph at lines 381--408
 
  []
 
-[14] (./main.aux)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[13] [14] (./main.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -683,7 +686,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  3954 strings out of 493304
  61264 string characters out of 6139871
- 134691 words of memory out of 5000000
+ 135691 words of memory out of 5000000
  7351 multiletter control sequences out of 15000+600000
  12777 words of font info for 46 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -700,7 +703,7 @@ sfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
 10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on main.pdf (14 pages, 689405 bytes).
+Output written on main.pdf (14 pages, 689314 bytes).
 PDF statistics:
  131 PDF objects out of 1000 (max. 8388607)
  73 compressed objects within 1 object stream
