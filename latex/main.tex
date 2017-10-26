@@ -14,7 +14,7 @@
 In this study, we present a convolutional neural network (CNN) which is used to predict the landmarks on beetle's images.  The model is designed as a pipeline of the layers. It is evaluated on five datasets of beetle: \textit{left mandible, right mandible, pronotum, body, and head}. The models which used to predict the landmarks for each beetle's part have the same structures but the output at the last layer is modified to suitable with the number of landmarks that it should be predicted. For each dataset, a number of $260$ images are used to train and validate, the remaining images are used to test the output model. The evaluation is the correlation coefficient between the manual coordinates (which given by the biologist) and the predict coordinates. Besides, a statistic based on the distances between the manual landmarks and predicted landmarks are also calculated. The model is implemented by Python on Lassagne framework\cite{lasagne}.
 \end{abstract}
 
-\section{Convolutional neural network}
+\section{Model}
 \subsection{Architecture}
 The network includes three convolutional(CONV) layers followed by three maximum pooling(POOL) layers, four dropouts(DROP) layers, and three full connected(FC) layers (Fig.\ref{pmodel}). The input of the network is the gray-scale image with the size of $256 \times 192$. The depth of network can be expressed by increasing of the deep at each convolutional layer. They are increased from $32, 64,$ and $128$ from the first CONV layer to the third CONV layer with different filter sizes. While, the filter sizes are kept in the same size for every POOL layers. The dropout ratios of the DROP layers increase from the first to the end: $0.1, 0.2, 0.3, $ and $0.5$. At the end of the network, three full connected are set up to predict the landmarks. The first two FC layers have the same outputs($1000$) while the output at the last FC has been change to correspond with the number of landmarks. The detail parameters at each layer are presented in Appendix \ref{apa}. The model is implemented by Lassagne framework\cite{lasagne}.
 \begin{figure}[h!]
@@ -64,7 +64,15 @@ For each part, the network is training and validation with many times (called ro
 The predicted landmarks are evaluated by two ways: calculating correlation coefficient and computing the statistic based on the number of landmarks has well prediction.
 The correlation coefficient is calculated by using three methods: Pearson\cite{pallant2013spss}, Spearman\cite{myers2010research}, and Kendall\cite{kendall1938new}. The well prediction statistic is computed based on the distance between manual and predicted landmark. Firstly, the distance between manual and prediction one is calculated. Then, the average distance of this landmark on all images has been computed. A predicted landmark is considered as well prediction if the distance between it and the corresponding manual is less than average value. The average distance of each landmark of each beetle's part is shown in Appendix \ref{apavgdistance}. Besides, the well prediction statistics of mandibles have been compared with the previous result\cite{le:hal-01571440}.
 
-This section presents the experimental on all parts of Beetle. For each part, we present the losses (training and validation), the correlation coefficient and the statistic of well prediction. All of the experiment results have been provided on GitHub\footnote{https://github.com/linhlevandlu/cnnBeetles/tree/master/data}(Appendix \ref{apb}).
+This section presents the experimental on all parts of Beetle. For each part, we present the losses (training and validation), the correlation coefficient and the statistic of well prediction. All of the experiment results have been provided on GitHub\footnote{https://github.com/linhlevandlu/cnnBeetles/tree/master/data}(Appendix \ref{apb}). All the sub-section provides the experiment results of each part. They have the same structure including:
+\begin{itemize}
+	\item A table describes the information during training and validation: the images used to train, the images used to test, training and validation loss,
+	\item Two examples images show the curve losses during training (and validation),
+	\item A table contains the correlation coefficient results,
+	\item A chart shows the proportion of well prediction landmarks by CNN,
+	\item A chart shows the proportion of well prediction landmarks by MAELab (SIFT method) (This chart is only present in mandible).
+\end{itemize}
+
 \pagebreak
 %left mandible, right mandible, pronotum, body, and head
 \subsection{Left mandible part}
